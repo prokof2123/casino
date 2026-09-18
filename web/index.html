@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cassino</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1>Cassino</h1>
+      <div class="scoreboard">
+        <div class="score you">
+          <span class="label">You</span>
+          <span id="score-you" class="value">0</span>
+        </div>
+        <div class="score computer">
+          <span class="label">Computer</span>
+          <span id="score-computer" class="value">0</span>
+        </div>
+        <button id="new-deal">New deal</button>
+      </div>
+    </header>
+
+    <main class="table">
+      <section class="row computer-row">
+        <div class="hand" id="computer-hand"></div>
+        <div class="pile-info">
+          <span class="pile-label">Pile</span>
+          <span id="computer-pile-count" class="pile-count">0</span>
+        </div>
+      </section>
+
+      <section class="row middle-row">
+        <div class="talon" id="talon">
+          <div class="card back"></div>
+          <span id="talon-count" class="talon-count">40</span>
+        </div>
+        <div class="table-cards" id="table-cards"></div>
+        <div class="status" id="status">Dealing…</div>
+      </section>
+
+      <section class="row player-row">
+        <div class="hand" id="player-hand"></div>
+        <div class="pile-info">
+          <span class="pile-label">Pile</span>
+          <span id="player-pile-count" class="pile-count">0</span>
+        </div>
+      </section>
+
+      <section class="action-bar">
+        <div id="selection-info" class="selection-info"></div>
+        <button id="place-btn" disabled>Place</button>
+        <button id="capture-btn" disabled>Capture</button>
+        <button id="clear-btn">Clear selection</button>
+      </section>
+    </main>
+
+    <div id="overlay" class="overlay hidden">
+      <div class="overlay-card">
+        <h2 id="overlay-title">Deal over</h2>
+        <p id="overlay-detail"></p>
+        <button id="overlay-new-deal">New deal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="casino.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

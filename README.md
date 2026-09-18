@@ -12,6 +12,18 @@ There is no code here yet. There are tests.
    Card images: for example [Byron Knoll's public-domain deck](https://commons.wikimedia.org/wiki/Category:Playing_cards_set_by_Byron_Knoll)
    on Wikimedia Commons (SVG, all 52 cards).
 
+## Play in the browser
+
+Open `web/index.html` directly, or serve the folder and open it there:
+
+```sh
+python -m http.server -d web 8000
+```
+
+Then go to <http://localhost:8000>. Select a card from your hand and either
+place it, or select matching table cards too and capture. The computer plays
+automatically.
+
 ## Run the tests
 
 ```sh

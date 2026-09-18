@@ -1,0 +1,265 @@
+:root {
+  --felt: #1b5e3a;
+  --felt-dark: #143f28;
+  --card-bg: #fdfcf7;
+  --card-border: #d8d2c0;
+  --red: #b3261e;
+  --black: #1c1c1c;
+  --gold: #e8c15a;
+  --ink: #f2f2ea;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(ellipse at center, var(--felt) 0%, var(--felt-dark) 100%);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+}
+
+#app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.score {
+  text-align: center;
+  min-width: 64px;
+}
+
+.score .label {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.score .value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+button {
+  background: var(--gold);
+  color: #2a2205;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  filter: brightness(1.08);
+}
+
+.table {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 118px;
+  position: relative;
+}
+
+.middle-row {
+  min-height: 130px;
+  gap: 24px;
+}
+
+.hand {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pile-info {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.pile-label {
+  display: block;
+  text-transform: uppercase;
+}
+
+.pile-count {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.talon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.talon-count {
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 1.5em;
+}
+
+.table-cards {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.status {
+  min-width: 160px;
+  text-align: right;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.card {
+  width: 62px;
+  height: 90px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  user-select: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.card.red { color: var(--red); }
+.card.black { color: var(--black); }
+
+.card .corner {
+  position: absolute;
+  font-size: 0.8rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.card .corner.top-left { top: 4px; left: 5px; }
+.card .corner.bottom-right { bottom: 4px; right: 5px; transform: rotate(180deg); }
+
+.card .pip {
+  font-size: 1.6rem;
+}
+
+.card.back {
+  background: repeating-linear-gradient(
+    45deg,
+    #2c4f7c,
+    #2c4f7c 6px,
+    #24406a 6px,
+    #24406a 12px
+  );
+  border: 1px solid #17284a;
+}
+
+.card.selectable {
+  cursor: pointer;
+}
+
+.card.selectable:hover {
+  transform: translateY(-6px);
+}
+
+.card.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 0 0 3px var(--gold), 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card.disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.action-bar {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.selection-info {
+  min-width: 220px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.hidden { display: none; }
+
+.overlay-card {
+  background: var(--card-bg);
+  color: #222;
+  border-radius: 12px;
+  padding: 24px 32px;
+  text-align: center;
+  max-width: 320px;
+}
+
+.overlay-card h2 { margin-top: 0; }
+
+.overlay-card button { margin-top: 12px; }
